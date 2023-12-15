@@ -20,7 +20,13 @@ function generateLyrics(event) {
 
   let lyricsElement = document.querySelector("#lyrics");
   lyricsElement.classList.remove("hidden");
-  lyricsElement.innerHTML = `<div class="generating">⏳ Generating song lyrics about ${instructionsInput.value}</div>`;
+  new Typewriter("#lyrics", {
+    strings: `<span class="generating">⏳ Generating song lyrics about ${instructionsInput.value}...</span>`,
+    autoStart: true,
+    cursor: null,
+    delay: 30,
+    loop: true,
+  });
 
   axios.get(apiURL).then(displayLyrics);
 }
